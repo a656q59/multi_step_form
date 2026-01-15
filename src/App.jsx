@@ -26,7 +26,6 @@ function App() {
 
 
   const handleToggle = (key) => (_, isChecked) =>{
-    console.log(key,"<----Key")
     return (setAddons((s) => ({ ...s, [key]: isChecked })))
   }
 
