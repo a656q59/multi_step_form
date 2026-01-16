@@ -8,12 +8,46 @@ import { useState } from "react";
 
 const PersonalInfo = ()=>{
 
-    const [value,setValue] = useState('');
-    const [error,setError] = useState('');
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+      });
+      
+      const [errors, setErrors] = useState({
+        name: false,
+        email: false,
+        phone: false,
+      });
+      
+      const handleChange = (field) => (e) => {
+        setFormData({
+          ...formData,
+          [field]: e.target.value,
+        });
+      
+        // clear error as user types
+        setErrors({
+          ...errors,
+          [field]: false,
+        });
+      };
 
-    const handleChange =(e)=>{
-        setValue(e.target.value)
-    }
+
+      const handleSubmit = () => {
+        console.log("handleSubmit clicked")
+        const newErrors = {
+          name: formData.name.trim() === "",
+          email: formData.email.trim() === "",
+          phone: formData.phone.trim() === "",
+        };
+      
+        setErrors(newErrors);
+      
+        if (Object.values(newErrors).some(Boolean)) return;
+      
+        // submit form
+      };
 
 
     return (
@@ -35,15 +69,36 @@ const PersonalInfo = ()=>{
     title="Personal info" 
     subtitle="Please provide your name, email address, and phone number."
     >
-        <CustomTextField label="Name" placeholder="e.g. Stephen King"  ppts={{marginTop:"40px"}} value={value} handleChange={handleChange} error = {error}/>
-        <CustomTextField label="Email Address" placeholder="e.g. stephenking@lorem.com"/>
-        <CustomTextField label="Phone Number" placeholder="e.g. +1 234 567 890"/>
+      <CustomTextField
+  label="Name"
+  placeholder="e.g. Stephen King"
+  ppts={{ marginTop: "40px" }}
+  value={formData.name}
+  handleChange={handleChange("name")}
+  error={errors.name}
+/>
 
+<CustomTextField
+  label="Email Address"
+  placeholder="e.g. stephenking@lorem.com"
+  value={formData.email}
+  handleChange={handleChange("email")}
+  error={errors.email}
+/>
 
+<CustomTextField
+  label="Phone Number"
+  placeholder="e.g. +1 234 567 890"
+  value={formData.phone}
+  handleChange={handleChange("phone")}
+  error={errors.phone}
+/>
 
         <Box  mt={8.7} sx={{display:"flex", justifyContent:"end"}}>
            
-            <Button variant="contained" sx={{
+            <Button variant="contained" 
+            onClick={handleSubmit}
+            sx={{
                 "&:hover": {
                     backgroundColor: "hsl(214, 86.70%, 32.50%)"
                 },
