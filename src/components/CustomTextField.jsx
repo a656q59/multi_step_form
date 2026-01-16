@@ -11,12 +11,25 @@ const CustomTextField=({label,value, placeholder,ppts,handleChange, error})=>{
         <Box sx={{display:"flex",flexDirection:"column",  alignItems:"center",...ppts}} gap={1} margin="20px 0px">
             <label style={{width:"100%", fontWeight:"400"}}>{label}</label>
             <Box  width="100%">
+            {error && (
+      <div style={{
+        display:"flex", justifyContent:"end",
+        color: "hsl(354, 84%, 57%)",
+        fontWeight: 600,
+        fontSize: "0.8rem",
+      }}>
+       
+        This field is required
+      
+      </div>
+    )}
             <TextField
             error = {error}
   required
   value={value}
   placeholder={placeholder}   // use placeholder, not defaultValue
-  onChange={handleChange}     // if controlled input
+  onChange={handleChange} 
+  helperText={null}
   sx={{
     width: "100%",
     borderRadius: "50px",
