@@ -1,11 +1,16 @@
 import { Box, Button } from "@mui/material";
 import CustomCheckbox from "../components/CustomCheckbox";
 import Template from "../components/Template";
+import { useNavigate } from "react-router-dom";
 
 const Addons = ({ plan , addons, handleToggle}) => {
   
 
-  
+  const navigate = useNavigate();
+
+  const handleSubmit = ()=>{
+      navigate("/finisher")
+  }
     
 
   return (
@@ -43,7 +48,10 @@ const Addons = ({ plan , addons, handleToggle}) => {
 
     <Box  mt={10} sx={{display:"flex", justifyContent:"space-between"}}>
     <Button sx={{ color: 'hsl(231, 11%, 63%)', fontWeight:"800" }}>Go Back</Button>
-    <Button variant="contained" sx={{padding:"7px 20px", backgroundColor:"hsl(213, 96%, 18%)"}}>Next Step</Button>
+    <Button 
+    onClick={handleSubmit}
+    variant="contained" 
+    sx={{padding:"7px 20px", backgroundColor:"hsl(213, 96%, 18%)"}}>Next Step</Button>
     </Box>
 
 
