@@ -6,9 +6,17 @@ import iconarcade from '../assets/images/icon-arcade.svg';
 import iconadv from '../assets/images/icon-advanced.svg';
 import iconpro from '../assets/images/icon-pro.svg';
 import CustomSwitch from "../components/CustomSwitch";
+import { useNavigate } from "react-router-dom";
 
 
 const PlanSelection = ({plan, handleClick, selectedItem,handleCardClick}) => {
+    const navigate = useNavigate();
+
+const handleSubmit = ()=>{
+    navigate("/addons")
+}
+
+
     const label = { inputProps: { 'aria-label': 'Switch' } };
     // const [plan,setPlan] = useState(false);
     
@@ -93,7 +101,9 @@ const PlanSelection = ({plan, handleClick, selectedItem,handleCardClick}) => {
                     color:"hsl(213, 96%, 18%)",
                     backgroundColor:"#fff"
                 },}}>Go Back</Button>
-            <Button variant="contained" sx={{
+            <Button variant="contained" 
+            onClick={handleSubmit}
+            sx={{
                 "&:hover": {
                     backgroundColor: "hsl(214, 86.70%, 32.50%)"
                 },
