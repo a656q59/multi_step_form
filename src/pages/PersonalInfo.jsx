@@ -2,12 +2,13 @@ import {  Box, Button, Grid, Typography } from "@mui/material";
 import CustomTextField from "../components/CustomTextField";
 import Template from "../components/Template";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const PersonalInfo = ()=>{
-
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -46,7 +47,7 @@ const PersonalInfo = ()=>{
       
         if (Object.values(newErrors).some(Boolean)) return;
       
-        // submit form
+        navigate("/plan")
       };
 
 
