@@ -78,7 +78,10 @@ const Finisher = () => {
                 <Button
                     onClick={() => navigate("/addons")}
                     sx={{ color: 'hsl(231, 11%, 63%)', fontWeight: "800" }}>Go Back</Button>
-                <Button variant="contained" sx={{ padding: "7px 20px", backgroundColor: 'hsl(243, 100%, 62%)' }}>Confirm</Button>
+                <Button 
+                  onClick={() => navigate("/ack")}
+                variant="contained" 
+                sx={{ padding: "7px 20px", backgroundColor: 'hsl(243, 100%, 62%)' }}>Confirm</Button>
             </Box>
         </Template>
     )
