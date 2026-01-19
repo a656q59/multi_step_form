@@ -7,6 +7,7 @@ import Finisher from './pages/Finisher'
 import PersonalInfo from './pages/PersonalInfo'
 import PlanSelection from './pages/PlanSelection'
 import { useState } from 'react'
+import Thankyou from './pages/Thankyou'
 // import './App.css'
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
       } 
         />
         <Route path="finisher" element={<Finisher />} />
+         <Route path="ack" element={<Thankyou />} />
 
       </Route>
     )
