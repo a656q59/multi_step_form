@@ -6,8 +6,9 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
 
-const Finisher = () => {
+const Finisher = (plan, addons, selectedItem ) => {
     const navigate = useNavigate();
+    console.log(plan.addons,"<-----------plan, addons, selectedItem -------------")
     return (
         <Template
             title="Finishing up"
@@ -18,7 +19,8 @@ const Finisher = () => {
                 <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} p={2}>
                     <Box>
                         <Typography sx={{ fontWeight: "600" }} color="hsl(213, 96%, 18%)">
-                            Arcade(Monthly)
+                            {plan.selectedItem}
+                            {plan?"(Yearly)":"(Monthly)"}
                         </Typography>
 
                         <Link to="/plan" style={{ textDecoration: 'underline', textDecorationColor: 'hsl(231, 11%, 63%)' }}>
