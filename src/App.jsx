@@ -19,36 +19,48 @@ function App() {
     customizableProfile: false,
   });
 
-  const [selectedItem, setSelectedItem] = useState(null);
-    const handleCardClick = (e) => {
-        setSelectedItem(e);
-    }
+  const [selectedItem, setSelectedItem] = useState("arcade");
 
+    const handleCardClick = (item) => {
+        setSelectedItem(item);
+    }
 
 
   const handleToggle = (key) => (_, isChecked) =>{
     return (setAddons((s) => ({ ...s, [key]: isChecked })))
   }
 
+
   const handlePlanSelection = ()=>{
     setPlan(!plan);
   }
+
+  console.log(plan, addons, selectedItem ,"<-----------plan, addons, selectedItem -------------")
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Sidebar />}>
         <Route index element={<PersonalInfo />} />
-        <Route path="plan" element={<PlanSelection plan={plan} 
+
+        <Route 
+        path="plan" 
+        element={<PlanSelection plan={plan} 
         selectedItem ={selectedItem}
         handleCardClick={handleCardClick}
         handleClick={handlePlanSelection}/>} />
+
         <Route 
         path="addons" 
         element={
-        <Addons plan={plan} addons={addons} handleToggle = {(e)=>handleToggle(e)}/>
+        <Addons
+         plan={plan} 
+         addons={addons} 
+         handleToggle = {(e)=>handleToggle(e)}/>
       } 
         />
-        <Route path="finisher" element={<Finisher />} />
+        <Route 
+        path="finisher" 
+        element={<Finisher plan={plan} addons={addons} selectedItem={selectedItem} />} />
          <Route path="ack" element={<Thankyou />} />
 
       </Route>
