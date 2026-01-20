@@ -20,7 +20,7 @@ const CustomCard = ({title,src,price, addText='',onClick,selected}) => {
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-around",
-      border: selected?"1px solid purple":"1px solid  hsl(231, 11%, 63%)", // default border
+      border: selected?"1px solid purple":"1px solid hsl(231, 11%, 63%)", // default border
       backgroundColor:selected?"hsl(218, 100%, 97%)":"white",
       borderRadius: "8px",
       outline: "none", // prevent default focus ring   
