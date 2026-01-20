@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
 const PlanSelection = ({ plan, handleClick, selectedItem, handleCardClick }) => {
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        console.log(e.target, "<----------------------------e")
+    const handleSubmit = () => {
+        if (!selectedItem) return;
         navigate("/addons")
     }
 
@@ -107,6 +107,7 @@ const PlanSelection = ({ plan, handleClick, selectedItem, handleCardClick }) => 
                         },
                     }}>Go Back</Button>
                 <Button variant="contained"
+                 disabled={!selectedItem}
                     onClick={handleSubmit}
                     sx={{
                         "&:hover": {
