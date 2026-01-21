@@ -1,82 +1,96 @@
+import { Grid } from "@mui/material";
+import { useState } from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 
-import { Box, Grid, Stack } from '@mui/material'
-import { createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterProvider } from 'react-router-dom'
-import Sidebar from './components/Sidebar'
-import Addons from './pages/Addons'
-import Finisher from './pages/Finisher'
-import PersonalInfo from './pages/PersonalInfo'
-import PlanSelection from './pages/PlanSelection'
-import { useState } from 'react'
-import Thankyou from './pages/Thankyou'
-// import './App.css'
+import Sidebar from "./components/Sidebar";
+import PersonalInfo from "./pages/PersonalInfo";
+import PlanSelection from "./pages/PlanSelection";
+import Addons from "./pages/Addons";
+import Finisher from "./pages/Finisher";
+import Thankyou from "./pages/Thankyou";
 
 function App() {
-  const [plan,setPlan] = useState(false);
-  // const [planType,setPlanType] = useState("arcade");
+  const [plan, setPlan] = useState(false);
+  const [selectedItem, setSelectedItem] = useState("arcade");
+  const [selectedPrice, setSelectedPrice] = useState("9/mo");
+
   const [addons, setAddons] = useState({
     onlineService: false,
     largerStorage: false,
     customizableProfile: false,
   });
 
-  const [selectedItem, setSelectedItem] = useState("arcade");
+  const handleCardClick = (plan, price) => {
+    console.log("item-------------->", plan, price)
+    setSelectedItem(plan);
+    setSelectedPrice(price);
+}
+  const handleToggle = (key) => (_, checked) =>
+    setAddons((prev) => ({ ...prev, [key]: checked }));
 
-    const handleCardClick = (item) => {
-        setSelectedItem(item);
-    }
-
-
-  const handleToggle = (key) => (_, isChecked) =>{
-    return (setAddons((s) => ({ ...s, [key]: isChecked })))
-  }
-
-
-  const handlePlanSelection = ()=>{
-    setPlan(!plan);
-  }
-
-  console.log(plan, addons, selectedItem ,"<-----------plan, addons, selectedItem -------------")
+  const handlePlanSelection = () => setPlan((p) => !p);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Sidebar />}>
         <Route index element={<PersonalInfo />} />
 
-        <Route 
-        path="plan" 
-        element={<PlanSelection plan={plan} 
-        selectedItem ={selectedItem}
-        handleCardClick={handleCardClick}
-        handleClick={handlePlanSelection}/>} />
-
-        <Route 
-        path="addons" 
-        element={
-        <Addons
-         plan={plan} 
-         addons={addons} 
-         handleToggle = {(e)=>handleToggle(e)}/>
-      } 
+        <Route
+          path="plan"
+          element={
+            <PlanSelection
+              plan={plan}
+              selectedItem={selectedItem}
+              handleCardClick={handleCardClick}
+              handleClick={handlePlanSelection}
+            />
+          }
         />
-        <Route 
-        path="finisher" 
-        element={<Finisher plan={plan} addons={addons} selectedItem={selectedItem} />} />
-         <Route path="ack" element={<Thankyou />} />
 
+        <Route
+          path="addons"
+          element={
+            <Addons
+              plan={plan}
+              addons={addons}
+              handleToggle={handleToggle}
+            />
+          }
+        />
+
+        <Route
+          path="finisher"
+          element={
+            <Finisher
+              plan={plan}
+              addons={addons}
+              selectedItem={selectedItem}
+              selectedPrice = {selectedPrice}
+            />
+          }
+        />
+
+        <Route path="ack" element={<Thankyou />} />
       </Route>
     )
-  )
-
-
+  );
 
   return (
-  <Grid container width="100%" border="2px dashed black" height="100vh" alignItems="center" justifyContent="center" backgroundColor="#00eaff1c"> 
-   <RouterProvider router={router}/>
-  </Grid>
-
-
-
-  )
+    <Grid
+      container
+      height="100vh"
+      justifyContent="center"
+      alignItems="center"
+      bgcolor="#00eaff1c"
+    >
+      <RouterProvider router={router} />
+    </Grid>
+  );
 }
 
-export default App
+export default App;
