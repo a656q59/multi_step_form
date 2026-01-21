@@ -1,9 +1,7 @@
 import { Box, createTheme, Grid, Stack, ThemeProvider } from "@mui/material";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 // import {bg-sidebar-desktop as Picture} from "../assets/images/bg-sidebar-desktop.svg";
 import asd from '../assets/images/bg-sidebar-desktop.svg';
-import { useState } from "react";
-// import { ReactComponent as BgSidebarDesktop  } from '../assets/images/bg-sidebar-desktop.svg';
 
 
 
@@ -17,9 +15,17 @@ const theme = createTheme({
   },
 });
 
-const Sidebar = ()=>{
+const stepMap = {
+  "/": 0,
+  "/plan": 1,
+  "/addons": 2,
+  "/finisher": 3,
+};
 
-  const [active, setActive] = useState(0);
+const Sidebar = ()=>{
+  const location = useLocation();
+
+  const active = stepMap[location.pathname] ?? 0;
 
     return (
 
@@ -53,7 +59,7 @@ const Sidebar = ()=>{
  
 
   {/* Foreground content */}
-  <Link to="/"onClick={() => setActive(0)} style={{ zIndex: 1, color: 'white', padding: '8px' , textDecoration:"none"}}> 
+  <Link to="/" style={{ zIndex: 1, color: 'white', padding: '8px' , textDecoration:"none"}}> 
     <Stack direction="row" sx={{ alignItems:"center", justifyContent:"start"}}>
       <Box marginRight={2} 
       sx={{padding:"5px 14px",  
@@ -70,7 +76,7 @@ const Sidebar = ()=>{
       </Stack>
     </Stack>   
   </Link>
-  <Link to="/plan"onClick={() => setActive(1)} style={{ zIndex: 1, color: 'white', padding: '8px', textDecoration:"none" }}>
+  <Link to="/plan" style={{ zIndex: 1, color: 'white', padding: '8px', textDecoration:"none" }}>
     <Stack direction="row" sx={{ alignItems:"center", justifyContent:"start"}}>
       <Box   marginRight={2} sx={{padding:"5px 14px",
          border:"1px solid white", borderRadius:"50%",
@@ -86,7 +92,7 @@ const Sidebar = ()=>{
     </Stack>   
   </Link>
   <Link to="/addons"
-  onClick={() => setActive(2)}
+ 
    style={{ zIndex: 1, color: 'white', padding: '8px', textDecoration:"none" }}>
     <Stack direction="row" sx={{ alignItems:"center", justifyContent:"start"}}>
       <Box marginRight={2} sx={{padding:"5px 14px", border:"1px solid white", borderRadius:"50%", 
@@ -99,7 +105,7 @@ const Sidebar = ()=>{
       </Stack>   
     </Link>
   <Link to="/finisher"
-   onClick={() => setActive(3)}
+   
    style={{ zIndex: 1, color: 'white', padding: '8px' , textDecoration:"none"}}>
       <Stack direction="row" sx={{ alignItems:"center", justifyContent:"start"}}>
         <Box marginRight={2} sx={{padding:"5px 14px", border:"1px solid white", borderRadius:"50%",   
