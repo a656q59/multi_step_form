@@ -20,6 +20,7 @@ const stepMap = {
   "/plan": 1,
   "/addons": 2,
   "/finisher": 3,
+  "/ack": 4,
 };
 
 const Sidebar = ()=>{
