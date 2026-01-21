@@ -6,9 +6,8 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
 
-const Finisher = (plan, addons, selectedItem ) => {
+const Finisher = ({ plan, addons, selectedItem, selectedPrice } ) => {
     const navigate = useNavigate();
-    console.log(plan.addons,"<-----------plan, addons, selectedItem -------------")
     return (
         <Template
             title="Finishing up"
@@ -19,7 +18,7 @@ const Finisher = (plan, addons, selectedItem ) => {
                 <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} p={2}>
                     <Box>
                         <Typography sx={{ fontWeight: "600" }} color="hsl(213, 96%, 18%)">
-                            {plan.selectedItem}
+                            {selectedItem}
                             {plan?"(Yearly)":"(Monthly)"}
                         </Typography>
 
@@ -29,12 +28,13 @@ const Finisher = (plan, addons, selectedItem ) => {
 
                     </Box>
                     <Typography sx={{ fontWeight: "600" }} color="hsl(213, 96%, 18%)">
-                        $9/mo
+                        ${selectedPrice}
                     </Typography>
                 </Box>
                 <Divider />
 
-                <Box mt={2} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} px={2} py={.5}>
+                {
+                  addons.onlineService && <Box mt={2} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} px={2} py={.5}>
                     <Box>
                         <Typography sx={{ color: 'hsl(231, 11%, 63%)' }}>
                             Online Service
@@ -42,11 +42,13 @@ const Finisher = (plan, addons, selectedItem ) => {
 
                     </Box>
                     <Typography color="hsl(213, 96%, 18%)">
-                        +$1/mo
+                        +{plan?"$10/yr":"$1/mo"}
                     </Typography>
                 </Box>
+                }
 
-                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} px={2} py={.5}>
+{addons.largerStorage
+ &&<Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} px={2} py={.5}>
                     <Box>
                         <Typography sx={{ color: 'hsl(231, 11%, 63%)' }}>
                             Larger storage
@@ -54,9 +56,24 @@ const Finisher = (plan, addons, selectedItem ) => {
 
                     </Box>
                     <Typography color="hsl(213, 96%, 18%)">
-                        +$2/mo
+                    +{plan?"$20/yr":"$2/mo"}
                     </Typography>
-                </Box>
+                </Box>}
+
+                {addons.customizableProfile
+ &&<Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} px={2} py={.5}>
+                    <Box>
+                        <Typography sx={{ color: 'hsl(231, 11%, 63%)' }}>
+                        Customizable Profile
+                        </Typography>
+
+                    </Box>
+                    <Typography color="hsl(213, 96%, 18%)">
+                   +{plan?"$20/yr":"$2/mo"}
+                    </Typography>
+                </Box>}
+
+
 
 
             </Box>
