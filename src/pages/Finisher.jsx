@@ -23,7 +23,19 @@ const Finisher = ({ plan, addons, selectedItem, selectedPrice } ) => {
                         </Typography>
 
                         <Link to="/plan" style={{ textDecoration: 'underline', textDecorationColor: 'hsl(231, 11%, 63%)' }}>
-                            <Box sx={{ color: 'hsl(231, 11%, 63%)' }}>Change</Box>
+                            <Box 
+                           >
+                            <span
+                             sx={{
+                                "&:hover, &:focus-visible":{
+                                    color: 'hsl(231, 11%, 63%)',
+                                    borderColor: "purple",
+                                  }
+                             }}
+                             >
+                                Change
+                             </span>
+                            </Box>
                         </Link>
 
                     </Box>
