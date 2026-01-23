@@ -24,7 +24,14 @@ const CustomCard = ({title,src,price, addText='',onClick,selected}) => {
       backgroundColor:selected?"hsl(218, 100%, 97%)":"white",
       borderRadius: "8px",
       outline: "none", // prevent default focus ring   
-      cursor: "pointer"
+      cursor: "pointer",
+      "&:hover, &:focus-visible":{
+        borderColor: "purple",
+        backgroundColor: "hsl(218, 100%, 99%)",
+        boxShadow: "0px 4px 12px rgba(0,0,0,0.12)", 
+        transition: "all 0.3s ease-in-out",
+      }
+      
     }}
   >
     <img src={src} height="40px" width="40" />
