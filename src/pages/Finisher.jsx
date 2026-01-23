@@ -22,19 +22,24 @@ const Finisher = ({ plan, addons, selectedItem, selectedPrice } ) => {
                             {plan?"(Yearly)":"(Monthly)"}
                         </Typography>
 
-                        <Link to="/plan" style={{ textDecoration: 'underline', textDecorationColor: 'hsl(231, 11%, 63%)' }}>
+                        <Link to="/plan" sx={{
+                            "&:hover, &:focus-visible":{
+                                    
+                                    textDecorationColor: 'hsl(243, 100%, 62%)',
+                                  }
+
+                         }}>
                             <Box 
                            >
-                            <span
-                             sx={{
+                            <Typography sx ={{
+                                color:"hsl(231, 11%, 63%)",
+                                textDecoration:"underline ",
                                 "&:hover, &:focus-visible":{
-                                    color: 'hsl(231, 11%, 63%)',
-                                    borderColor: "purple",
-                                  }
-                             }}
-                             >
-                                Change
-                             </span>
+                                    color:'hsl(243, 100%, 62%)',
+                                    fontWeight:"bold",
+                                    textDecorationColor: 'hsl(243, 100%, 62%)',
+                                  }}}
+                            >Change</Typography>
                             </Box>
                         </Link>
 
