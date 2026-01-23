@@ -22,6 +22,12 @@ const CustomCheckbox=({title,subTitle, price, ppts,checked=false,onChange})=>{
           border: "1px solid hsl(231, 11%, 63%)",
           borderRadius: "8px",
           outline: "none",
+          "&:hover, &:focus-visible":{
+        borderColor: "purple",
+        backgroundColor: "hsl(218, 100%, 99%)",
+        boxShadow: "0px 4px 12px rgba(0,0,0,0.12)", 
+        transition: "all 0.3s ease-in-out",
+      },
           ...(checked ? {
             borderColor: 'hsl(243, 100%, 62%)',
             backgroundColor: "hsl(218, 100%, 97%)"
