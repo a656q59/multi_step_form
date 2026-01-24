@@ -26,10 +26,9 @@ function App() {
   });
 
   const handleCardClick = (plan, price) => {
-    console.log("item-------------->", plan, price)
     setSelectedItem(plan);
     setSelectedPrice(price);
-}
+  }
   const handleToggle = (key) => (_, checked) =>
     setAddons((prev) => ({ ...prev, [key]: checked }));
 
@@ -70,7 +69,7 @@ function App() {
               plan={plan}
               addons={addons}
               selectedItem={selectedItem}
-              selectedPrice = {selectedPrice}
+              selectedPrice={selectedPrice}
             />
           }
         />
