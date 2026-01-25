@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
 
-const Finisher = ({ plan, addons, selectedItem, selectedPrice } ) => {
+const Finisher = ({ plan, addons, selectedItem, selectedPrice }) => {
     const navigate = useNavigate();
     return (
         <Template
@@ -19,27 +19,28 @@ const Finisher = ({ plan, addons, selectedItem, selectedPrice } ) => {
                     <Box>
                         <Typography sx={{ fontWeight: "600" }} color="hsl(213, 96%, 18%)">
                             {selectedItem}
-                            {plan?"(Yearly)":"(Monthly)"}
+                            {plan ? "(Yearly)" : "(Monthly)"}
                         </Typography>
 
                         <Link to="/plan" sx={{
-                            "&:hover, &:focus-visible":{
-                                    
-                                    textDecorationColor: 'hsl(243, 100%, 62%)',
-                                  }
+                            "&:hover, &:focus-visible": {
 
-                         }}>
-                            <Box 
-                           >
-                            <Typography sx ={{
-                                color:"hsl(231, 11%, 63%)",
-                                textDecoration:"underline ",
-                                "&:hover, &:focus-visible":{
-                                    color:'hsl(243, 100%, 62%)',
-                                    fontWeight:"bold",
-                                    textDecorationColor: 'hsl(243, 100%, 62%)',
-                                  }}}
-                            >Change</Typography>
+                                textDecorationColor: 'hsl(243, 100%, 62%)',
+                            }
+
+                        }}>
+                            <Box
+                            >
+                                <Typography sx={{
+                                    color: "hsl(231, 11%, 63%)",
+                                    textDecoration: "underline ",
+                                    "&:hover, &:focus-visible": {
+                                        color: 'hsl(243, 100%, 62%)',
+                                        fontWeight: "bold",
+                                        textDecorationColor: 'hsl(243, 100%, 62%)',
+                                    }
+                                }}
+                                >Change</Typography>
                             </Box>
                         </Link>
 
@@ -51,44 +52,44 @@ const Finisher = ({ plan, addons, selectedItem, selectedPrice } ) => {
                 <Divider />
 
                 {
-                  addons.onlineService && <Box mt={2} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} px={2} py={.5}>
-                    <Box>
-                        <Typography sx={{ color: 'hsl(231, 11%, 63%)' }}>
-                            Online Service
-                        </Typography>
+                    addons.onlineService && <Box mt={2} sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} px={2} py={.5}>
+                        <Box>
+                            <Typography sx={{ color: 'hsl(231, 11%, 63%)' }}>
+                                Online Service
+                            </Typography>
 
+                        </Box>
+                        <Typography color="hsl(213, 96%, 18%)">
+                            +{plan ? "$10/yr" : "$1/mo"}
+                        </Typography>
                     </Box>
-                    <Typography color="hsl(213, 96%, 18%)">
-                        +{plan?"$10/yr":"$1/mo"}
-                    </Typography>
-                </Box>
                 }
 
-{addons.largerStorage
- &&<Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} px={2} py={.5}>
-                    <Box>
-                        <Typography sx={{ color: 'hsl(231, 11%, 63%)' }}>
-                            Larger storage
-                        </Typography>
+                {addons.largerStorage
+                    && <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} px={2} py={.5}>
+                        <Box>
+                            <Typography sx={{ color: 'hsl(231, 11%, 63%)' }}>
+                                Larger storage
+                            </Typography>
 
-                    </Box>
-                    <Typography color="hsl(213, 96%, 18%)">
-                    +{plan?"$20/yr":"$2/mo"}
-                    </Typography>
-                </Box>}
+                        </Box>
+                        <Typography color="hsl(213, 96%, 18%)">
+                            +{plan ? "$20/yr" : "$2/mo"}
+                        </Typography>
+                    </Box>}
 
                 {addons.customizableProfile
- &&<Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} px={2} py={.5}>
-                    <Box>
-                        <Typography sx={{ color: 'hsl(231, 11%, 63%)' }}>
-                        Customizable Profile
-                        </Typography>
+                    && <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} px={2} py={.5}>
+                        <Box>
+                            <Typography sx={{ color: 'hsl(231, 11%, 63%)' }}>
+                                Customizable Profile
+                            </Typography>
 
-                    </Box>
-                    <Typography color="hsl(213, 96%, 18%)">
-                   +{plan?"$20/yr":"$2/mo"}
-                    </Typography>
-                </Box>}
+                        </Box>
+                        <Typography color="hsl(213, 96%, 18%)">
+                            +{plan ? "$20/yr" : "$2/mo"}
+                        </Typography>
+                    </Box>}
 
 
 
@@ -108,16 +109,16 @@ const Finisher = ({ plan, addons, selectedItem, selectedPrice } ) => {
                 </Typography>
             </Box>
 
+            {/* ------------------------------navigation buttons------------------------------------- */}
 
-
-            <Box mt={10} sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Box mt={10} display={{ xs: "none", lg: "flex" }} sx={{ justifyContent: "space-between" }}>
                 <Button
                     onClick={() => navigate("/addons")}
                     sx={{ color: 'hsl(231, 11%, 63%)', fontWeight: "800" }}>Go Back</Button>
-                <Button 
-                  onClick={() => navigate("/ack")}
-                variant="contained" 
-                sx={{ padding: "7px 20px", backgroundColor: 'hsl(243, 100%, 62%)' }}>Confirm</Button>
+                <Button
+                    onClick={() => navigate("/ack")}
+                    variant="contained"
+                    sx={{ padding: "7px 20px", backgroundColor: 'hsl(243, 100%, 62%)' }}>Confirm</Button>
             </Box>
         </Template>
     )
