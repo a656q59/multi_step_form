@@ -1,5 +1,5 @@
-import { Box, createTheme, Grid, Stack, ThemeProvider } from "@mui/material";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Box, Button, createTheme, Grid, Stack, ThemeProvider } from "@mui/material";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 // import {bg-sidebar-desktop as Picture} from "../assets/images/bg-sidebar-desktop.svg";
 import asd from '../assets/images/bg-sidebar-desktop.svg';
 import bgimagemobile from '../assets/images/bg-sidebar-mobile.svg';
@@ -26,27 +26,52 @@ const stepMap = {
 
 const Sidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const active = stepMap[location.pathname] ?? 0;
+
+  const handleNextButtonClick = () => {
+
+    console.log(location.pathname, stepMap[location.pathname])
+
+    if (location.pathname === "/") {
+      navigate("/plan");
+    }
+    else if (location.pathname === "/plan")
+      navigate("/addons");
+    else if (location.pathname === "/addons")
+      navigate("/finisher");
+    else if (location.pathname === "/finisher")
+      navigate("/ack");
+
+    else navigate("/");
+  }
 
   return (
 
     <ThemeProvider theme={theme}>
 
       <Grid container
+
+
         width="50%"
         height="70%"
         padding={{ xs: "0px", lg: "5px" }}
         sx={{
           zIndex: 1, backgroundColor: "#fff",
           display: "flex",
-          flexDirection: { xs: "column", sm: "column", md: "column", lg: "row" }
+          flexDirection: { xs: "column", sm: "column", md: "column", lg: "row" },
+          position: "relative"
         }}>
+
+        {/* sidebar section */}
+
 
         <Grid item
           size={{ xs: 12, lg: 3.5 }}
           height={{ xs: "200px", lg: "100%" }}
           sx={{
+
             borderRadius: "10px", overflow: "hidden", position: 'relative',
             gridArea: { xs: "1 / 1", md: "auto" },
           }}  >
@@ -165,15 +190,20 @@ const Sidebar = () => {
           </Stack>
 
         </Grid>
+
+
+        {/* Outlet section */}
+
         <Grid item
           size={{ xs: 12, lg: 8 }}
           sx={{
+
             position: "relative",
             width: "100%",
             height: { xs: "70%", lg: "100%" }
 
           }}
-          backgroundColor="white"
+          backgroundColor={{ xs: "hsl(218, 100%, 97%)", lg: "white" }}
           padding={{ xs: "30px", lg: "45px 20px 30px 50px" }}
         >
           <Box sx={{
@@ -195,7 +225,53 @@ const Sidebar = () => {
           </Box>
         </Grid>
 
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: 0,
+            display: { xs: "flex", lg: "none" },
+            justifyContent: location.pathname === "/" ? "end" : "space-around",
+            width: "100%",
+            padding: "10px 0px",
+            height: "50px",
+            backgroundColor: "#fff"
+          }}>
 
+          {
+            location.pathname !== '/' &&
+            <Button
+              onClick={() => navigate("/")}
+              sx={{
+                color: "hsl(231, 11%, 63%)",
+                fontWeight: 800,
+                "&:hover": {
+                  color: "hsl(213, 96%, 18%)",
+                  backgroundColor: "#fff",
+                },
+              }}
+            >
+              Go Back
+            </Button>
+          }
+
+          <Button
+            variant="contained"
+            // disabled={!selectedItem}
+            onClick={handleNextButtonClick
+            }
+            sx={{
+              px: 3,
+              backgroundColor: "hsl(213, 96%, 18%)",
+              marginRight: location.pathname === "/" ? "81px" : "0px",
+              "&:hover": {
+                backgroundColor: "hsl(214, 86.7%, 32.5%)",
+              },
+            }}
+          >
+            Next Step
+          </Button>
+
+        </Box>
 
       </Grid>
     </ThemeProvider>
