@@ -8,16 +8,15 @@ import PropTypes from "prop-types";
 const Template = ({ title, subtitle, children }) => {
 
     return (
-        <Grid container sx={{ border: "2px solid green", padding: { xs: "20px" } }}>
-            <Box height="79px">
+        <Grid container sx={{ padding: { xs: "20px" } }}>
+            <Box >
                 <Typography sx={{ fontWeight: "800", fontSize: "34px", color: "hsl(213, 96%, 18%)" }}>{title}</Typography>
-                <Typography variant="body1" sx={{ opacity: ".5", color: " hsl(231, 11%, 63%)" }}>{subtitle}</Typography>
+                <Typography variant="h5" sx={{ opacity: ".5", color: " hsl(231, 11%, 63%)" }}>{subtitle}</Typography>
             </Box>
-            <Box width="100%" height="364px">
+            <Box width="100%">
                 {children}
             </Box>
-            <Box width="100%" height="110px">
-            </Box>
+
         </Grid>
     );
 }
