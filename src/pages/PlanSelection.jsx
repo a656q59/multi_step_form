@@ -48,7 +48,7 @@ const PlanSelection = ({ plan, selectedItem, handleClick, handleCardClick }) => 
       title="Select your plan"
       subtitle="You have the option of monthly or yearly billing."
     >
-      <Stack direction={{ xs: "column", lg: "row" }} gap={2} justifyContent="center" mt={4} border="2px solid red" width="100%">
+      <Stack direction={{ xs: "column", lg: "row" }} gap={2} justifyContent="center" mt={4} width="100%">
         {plansData.map((item) => (
           <CustomCard
             key={item.id}
@@ -90,7 +90,11 @@ const PlanSelection = ({ plan, selectedItem, handleClick, handleCardClick }) => 
         </Typography>
       </Box>
 
-      <Box mt={13} display="flex" justifyContent="space-between">
+
+
+      {/* ------------------------------navigation buttons------------------------------------- */}
+
+      <Box mt={13} display={{ xs: "none", lg: "flex" }} justifyContent="space-between">
         <Button
           onClick={() => navigate("/")}
           sx={{
