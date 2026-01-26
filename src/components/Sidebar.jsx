@@ -30,6 +30,24 @@ const Sidebar = () => {
 
   const active = stepMap[location.pathname] ?? 0;
 
+  const handlePrevButtonClick = () => {
+
+
+    if (location.pathname === "/") {
+      navigate("/");
+    }
+    else if (location.pathname === "/plan")
+      navigate("/");
+    else if (location.pathname === "/addons")
+      navigate("/plan");
+    else if (location.pathname === "/finisher")
+      navigate("/addons");
+
+    else navigate("/");
+  }
+
+
+
   const handleNextButtonClick = () => {
 
 
@@ -255,8 +273,9 @@ const Sidebar = () => {
             overflow: "hidden",
             padding: { xs: "10px", lg: "0px 10px" },
             width: { xs: "70%", lg: "100%" },
-            height: { lg: "100%" }
+            height: { lg: "100%" },
 
+            display: { xs: "block", lg: "flex" }
           }}>
             <Outlet
             />
@@ -278,7 +297,7 @@ const Sidebar = () => {
           {
             location.pathname !== '/' &&
             <Button
-              onClick={() => navigate("/")}
+              onClick={handlePrevButtonClick}
               sx={{
                 color: "hsl(231, 11%, 63%)",
                 fontWeight: 800,
