@@ -8,6 +8,45 @@ import Divider from '@mui/material/Divider';
 
 const Finisher = ({ plan, addons, selectedItem, selectedPrice }) => {
     const navigate = useNavigate();
+    const monthlyAddOns = [
+        {
+            "onlineService": 1,
+        },
+        {
+            "largerStorage": 2
+        },
+        {
+            "customizableProfile": 2
+        }
+    ]
+    const yearlyAddOns = [
+        {
+            "onlineService": 10,
+        },
+        {
+            "largerStorage": 20
+        },
+        {
+            "customizableProfile": 20
+        }
+    ]
+
+    const CalculatePrice = () => {
+        const planValue = parseInt(selectedPrice.split('/')[0])
+        const addOnsInfo = plan ? yearlyAddOns.map((item, index) => Object.values(addons)[index] ? item : 0) : monthlyAddOns.map((item, index) => Object.values(addons)[index] ? item : 0)
+        const total = addOnsInfo.reduce((sum, obj) => {
+            const value = Object.values(obj)[0];
+            return sum + (Number(value) || 0);
+        }, 0);
+        console.log(total + planValue);
+        const totalValue = (total + planValue);
+        return totalValue
+
+    }
+
+
+
+    console.log(plan, addons, selectedItem, selectedPrice);
     return (
         <Template
             title="Finishing up"
@@ -97,15 +136,15 @@ const Finisher = ({ plan, addons, selectedItem, selectedPrice }) => {
             </Box>
 
 
-            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} p={4}>
+            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", }} px={4} py={1.6}>
                 <Box>
                     <Typography sx={{ color: 'hsl(231, 11%, 63%)' }}>
-                        Total(per month)
+                        Total{plan ? "(per year)" : "(per month)"}
                     </Typography>
 
                 </Box>
                 <Typography sx={{ color: ' hsl(243, 100%, 62%)', fontWeight: "900", fontSize: "20px" }}>
-                    +$12/mo
+                    {"$"}{CalculatePrice()}{plan ? "/yr" : "/mo"}
                 </Typography>
             </Box>
 
