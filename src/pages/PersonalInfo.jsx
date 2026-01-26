@@ -73,7 +73,7 @@ const PersonalInfo = () => {
       <CustomTextField
         label="Name"
         placeholder="e.g. Stephen King"
-        ppts={{ marginTop: "40px" }}
+        ppts={{ marginTop: { lg: "-20px", xl: "0px" } }}
         value={formData.name}
         handleChange={handleChange("name")}
         error={errors.name}
@@ -97,7 +97,7 @@ const PersonalInfo = () => {
 
 
       {/* ------------------------------navigation buttons------------------------------------- */}
-      <Box mt={8.7} display={{ xs: "none", lg: "flex" }} sx={{ justifyContent: "end" }}>
+      <Box mt={5.7} display={{ xs: "none", lg: "flex" }} sx={{ justifyContent: "end" }}>
 
         <Button variant="contained"
           onClick={handleSubmit}

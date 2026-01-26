@@ -66,8 +66,8 @@ const PlanSelection = ({ plan, selectedItem, handleClick, handleCardClick }) => 
         display="flex"
         justifyContent="center"
         alignItems="center"
-        my={5}
-        py={1}
+        my={{ xs: 2, lg: 5 }}
+        py={1.5}
         sx={{
           borderRadius: 2,
           backgroundColor: "hsl(218, 100%, 97%)",
