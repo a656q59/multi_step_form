@@ -150,7 +150,7 @@ const Finisher = ({ plan, addons, selectedItem, selectedPrice }) => {
 
             {/* ------------------------------navigation buttons------------------------------------- */}
 
-            <Box mt={10} display={{ xs: "none", lg: "flex" }} sx={{ justifyContent: "space-between" }}>
+            <Box mt={7} display={{ xs: "none", lg: "flex" }} sx={{ justifyContent: "space-between" }}>
                 <Button
                     onClick={() => navigate("/addons")}
                     sx={{ color: 'hsl(231, 11%, 63%)', fontWeight: "800" }}>Go Back</Button>

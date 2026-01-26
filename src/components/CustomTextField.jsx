@@ -8,7 +8,7 @@ const CustomTextField = ({ label, value, placeholder, ppts, handleChange, error 
 
   return (
 
-    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", ...ppts }} gap={1} margin="20px 0px">
+    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", ...ppts }} gap={1} >
       <label style={{ width: "100%", fontWeight: "400", color: "hsl(213, 96%, 18%)" }}>{label}</label>
       <Box width="100%">
         {error && (

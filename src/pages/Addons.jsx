@@ -46,7 +46,7 @@ const Addons = ({ plan, addons, handleToggle }) => {
       />
       {/* ------------------------------navigation buttons------------------------------------- */}
 
-      <Box mt={10} display={{ xs: "none", lg: "flex" }} sx={{ justifyContent: "space-between" }}>
+      <Box mt={5} display={{ xs: "none", lg: "flex" }} sx={{ justifyContent: "space-between" }}>
         <Button sx={{ color: 'hsl(231, 11%, 63%)', fontWeight: "800" }} onClick={() => navigate("/plan")}>Go Back</Button>
         <Button
           onClick={handleSubmit}

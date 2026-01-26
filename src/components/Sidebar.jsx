@@ -55,7 +55,7 @@ const Sidebar = () => {
 
         width="50%"
         height="70%"
-        padding={{ xs: "0px", lg: "5px" }}
+        padding={{ xs: "0px", lg: "10px" }}
         sx={{
           zIndex: 1, backgroundColor: "#fff",
           display: "flex",
@@ -66,43 +66,55 @@ const Sidebar = () => {
         {/* sidebar section */}
 
 
-        <Grid item
-          size={{ xs: 12, lg: 3.5 }}
+        <Grid item size={{ xs: 12, md: 12, lg: 3.5 }}
+
+
           height={{ xs: "200px", lg: "100%" }}
+
           sx={{
-            borderRadius: "10px", overflow: "hidden", position: 'relative',
-            gridArea: { xs: "1 / 1", md: "auto" },
+
+
+            position: "relative",
+            borderRadius: "10px", overflow: "hidden"
           }}  >
+          <Box sx={{
 
-          <img
-            src={asd}
-            alt="Background"
-            style={{
-              display: { xs: "none", lg: "block" },
-              inset: 0,
-              position: "absolute",
-              zIndex: "-100",
-              objectFit: "contain",
-              width: "100%",
-              height: "100%",
-              border: "2px dashed black",
-              opacity: 1, // Optional: adjust if you want a translucent effect
-            }}
-          />
-          <img
-            src={bgimagemobile}
-            alt="Background"
-            style={{
-              display: { xs: "block", lg: "none" },
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover', // Scale the image like a background
-              zIndex: -1,
-              opacity: 1, // Optional: adjust if you want a translucent effect
-            }}
-          />
+            width: "100%",
+            display: { xs: "none", lg: "block" },
+            borderRadius: "10px", overflow: "hidden"
+          }}>
+            <img
+              src={asd}
 
+              alt="Background"
+              style={{
+
+                position: "absolute",
+                zIndex: "-100",
+                objectFit: "cover",
+                // width: "100%",
+                height: "100%",
+                opacity: 1, // Optional: adjust if you want a translucent effect
+              }}
+            />
+          </Box>
+          <Box sx={{
+            display: { xs: "block", lg: "none" },
+          }}>
+            <img
+              src={bgimagemobile}
+              alt="Background"
+              style={{
+
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover', // Scale the image like a background
+                zIndex: -1,
+                opacity: 1, // Optional: adjust if you want a translucent effect
+              }}
+            />
+          </Box>
 
 
 
@@ -115,19 +127,22 @@ const Sidebar = () => {
             alignItems={{ xs: "start", lg: "start" }}
             justifyContent={{ xs: "center", lg: "start" }}
             padding={2}
-            gap={2}
+            gap={4}
             sx={{ overflow: 'hidden' }} // Make it a positioning context
           >
             {/* Background Image */}
 
 
             {/* Foreground content */}
-            <Link to="/" style={{ zIndex: 1, color: 'white', padding: '8px', textDecoration: "none" }}>
-              <Stack direction="row" sx={{ alignItems: "center", justifyContent: "start" }}>
+
+
+            <Link to="/" style={{ zIndex: 1, color: 'white', width: "100%", textDecoration: "none", }}>
+              <Stack direction="row" sx={{ alignItems: "center", justifyContent: "start", width: "70%", marginBottom: "20px" }}>
                 <Box marginRight={2}
                   sx={{
-                    padding: "5px 14px",
+                    padding: "5px 15px",
                     borderRadius: "50%",
+                    width: "4%",
                     border: "1px solid white",
                     backgroundColor: active === 0
                       ? "hsl(206, 94%, 87%)"  // clicked color
@@ -135,59 +150,80 @@ const Sidebar = () => {
                     color: active === 0 ? "#000" : "#fff",
                     fontWeight: "650"
                   }}>1</Box>
+
+
+
                 <Stack direction="column" sx={{ display: { xs: "none", lg: "block" } }}>
                   <Box >STEP 1</Box>
                   <Box sx={{ fontWeight: "600" }}>YOUR INFO</Box>
                 </Stack>
+
               </Stack>
             </Link>
-            <Link to="/plan" style={{ zIndex: 1, color: 'white', padding: '8px', textDecoration: "none" }}>
-              <Stack direction="row" sx={{ alignItems: "center", justifyContent: "start" }}>
-                <Box marginRight={2} sx={{
-                  padding: "5px 14px",
-                  border: "1px solid white", borderRadius: "50%",
-                  backgroundColor: active === 1
-                    ? "hsl(206, 94%, 87%)"  // clicked color
-                    : "transparent", // default
-                  color: active === 1 ? "#000" : "#fff",
-                  fontWeight: "600"
-                }}> 2</Box>
+
+
+            <Link to="/plan" style={{ zIndex: 1, color: 'white', width: "100%", textDecoration: "none", }}>
+              <Stack direction="row" sx={{ alignItems: "center", justifyContent: "start", width: "70%", marginBottom: "20px" }}>
+                <Box marginRight={2}
+                  sx={{
+                    padding: "5px 15px",
+                    borderRadius: "50%",
+                    width: "4%",
+                    border: "1px solid white",
+                    backgroundColor: active === 1
+                      ? "hsl(206, 94%, 87%)"  // clicked color
+                      : "transparent", // default
+                    color: active === 1 ? "#000" : "#fff",
+                    fontWeight: "650"
+                  }}> 2</Box>
                 <Stack direction="column" sx={{ display: { xs: "none", lg: "block" } }}>
                   <Box>STEP 2</Box>
                   <Box sx={{ fontWeight: "600" }}>SELECT PLAN </Box>
                 </Stack>
               </Stack>
             </Link>
+
             <Link to="/addons"
 
-              style={{ zIndex: 1, color: 'white', padding: '8px', textDecoration: "none" }}>
-              <Stack direction="row" sx={{ alignItems: "center", justifyContent: "start" }}>
-                <Box marginRight={2} sx={{
-                  padding: "5px 14px", border: "1px solid white", borderRadius: "50%",
-                  backgroundColor: active === 2
-                    ? "hsl(206, 94%, 87%)"  // clicked color
-                    : "transparent", // default
-                  color: active === 2 ? "#000" : "#fff",
-                  fontWeight: "600"
-                }}>3</Box>
+              style={{ zIndex: 1, color: 'white', width: "100%", textDecoration: "none", }}>
+              <Stack direction="row" sx={{ alignItems: "center", justifyContent: "start", width: "70%", marginBottom: "20px" }}>
+                <Box marginRight={2}
+                  sx={{
+                    padding: "5px 15px",
+                    borderRadius: "50%",
+                    width: "4%",
+                    border: "1px solid white",
+                    backgroundColor: active === 2
+                      ? "hsl(206, 94%, 87%)"  // clicked color
+                      : "transparent", // default
+                    color: active === 2 ? "#000" : "#fff",
+                    fontWeight: "650"
+                  }}>3</Box>
                 <Stack direction="column" sx={{ display: { xs: "none", lg: "block" } }}>   <Box>STEP 3</Box> <Box sx={{ fontWeight: "600" }}>ADD-ONS</Box></Stack>
 
               </Stack>
             </Link>
+
             <Link to="/finisher"
 
-              style={{ zIndex: 1, color: 'white', padding: '8px', textDecoration: "none" }}>
-              <Stack direction="row" sx={{ alignItems: "center", justifyContent: "start" }}>
-                <Box marginRight={2} sx={{
-                  padding: "5px 14px", border: "1px solid white", borderRadius: "50%",
-                  backgroundColor: active === 3
-                    ? "hsl(206, 94%, 87%)"  // clicked color
-                    : "transparent", // default
-                  color: active === 3 ? "#000" : "#fff", fontWeight: "600"
-                }}>4</Box>
+              style={{ zIndex: 1, color: 'white', width: "100%", textDecoration: "none", }}>
+              <Stack direction="row" sx={{ alignItems: "center", justifyContent: "start", width: "70%", marginBottom: "20px" }}>
+                <Box marginRight={2}
+                  sx={{
+                    padding: "5px 15px",
+                    borderRadius: "50%",
+                    width: "4%",
+                    border: "1px solid white",
+                    backgroundColor: active === 3
+                      ? "hsl(206, 94%, 87%)"  // clicked color
+                      : "transparent", // default
+                    color: active === 3 ? "#000" : "#fff",
+                    fontWeight: "650"
+                  }}>4</Box>
                 <Stack direction="column" sx={{ display: { xs: "none", lg: "block" } }}>   <Box>STEP 4</Box> <Box sx={{ fontWeight: "600" }}>SUMMARY</Box></Stack>
               </Stack>
             </Link>
+
           </Stack>
 
         </Grid>
@@ -196,33 +232,34 @@ const Sidebar = () => {
         {/* Outlet section */}
 
         <Grid item
-          size={{ xs: 12, lg: 8 }}
+          size={{ xs: 12, md: 12, lg: 8 }}
           sx={{
-
             position: "relative",
             width: "100%",
-            height: { xs: "70%", lg: "100%" }
+            height: { xs: "60%", md: "60%", lg: "100%" },
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+
 
           }}
           backgroundColor={{ xs: "hsl(218, 100%, 97%)", lg: "white" }}
-          padding={{ xs: "30px", lg: "45px 20px 30px 50px" }}
+          padding={{ xs: "30px", lg: "14px 20px 30px 50px" }}
         >
           <Box sx={{
-            position: { xs: "absolute", sm: "absolute", md: "relative" },
-            top: { sm: -120, lg: 0 },
-            left: { sm: 40, md: 0, lg: 0 },
-            right: { sm: 40, md: 40, lg: 0 },
+            position: { xs: "absolute", sm: "absolute", md: "absolute", lg: "relative" },
+            top: { sm: -120, md: -120, lg: 0 },
+            left: { sm: 50, lg: 0 },
             backgroundColor: "#fff",
             borderRadius: "12px",
             overflow: "hidden",
-            padding: { xs: "30px", lg: "0px" }
-
+            padding: { xs: "10px", lg: "0px 10px" },
+            width: { xs: "70%", lg: "100%" },
+            height: { lg: "100%" }
 
           }}>
             <Outlet
-              sx={{
-
-              }} />
+            />
           </Box>
         </Grid>
 
@@ -275,7 +312,7 @@ const Sidebar = () => {
         </Box>
 
       </Grid>
-    </ThemeProvider>
+    </ThemeProvider >
   )
 }
 

@@ -94,7 +94,7 @@ const PlanSelection = ({ plan, selectedItem, handleClick, handleCardClick }) => 
 
       {/* ------------------------------navigation buttons------------------------------------- */}
 
-      <Box mt={13} display={{ xs: "none", lg: "flex" }} justifyContent="space-between">
+      <Box mt={5} display={{ xs: "none", lg: "flex" }} justifyContent="space-between">
         <Button
           onClick={() => navigate("/")}
           sx={{
