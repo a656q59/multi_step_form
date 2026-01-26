@@ -32,7 +32,6 @@ const Sidebar = () => {
 
   const handleNextButtonClick = () => {
 
-    console.log(location.pathname, stepMap[location.pathname])
 
     if (location.pathname === "/") {
       navigate("/plan");
@@ -71,39 +70,41 @@ const Sidebar = () => {
           size={{ xs: 12, lg: 3.5 }}
           height={{ xs: "200px", lg: "100%" }}
           sx={{
-
             borderRadius: "10px", overflow: "hidden", position: 'relative',
             gridArea: { xs: "1 / 1", md: "auto" },
           }}  >
 
-          {window.innerWidth > 1200 ? <img
+          <img
             src={asd}
             alt="Background"
             style={{
+              display: { xs: "none", lg: "block" },
+              inset: 0,
+              position: "absolute",
+              zIndex: "-100",
+              objectFit: "contain",
+              width: "100%",
+              height: "100%",
+              border: "2px dashed black",
+              opacity: 1, // Optional: adjust if you want a translucent effect
+            }}
+          />
+          <img
+            src={bgimagemobile}
+            alt="Background"
+            style={{
+              display: { xs: "block", lg: "none" },
               position: 'absolute',
-
               width: '100%',
               height: '100%',
               objectFit: 'cover', // Scale the image like a background
               zIndex: -1,
               opacity: 1, // Optional: adjust if you want a translucent effect
             }}
-          /> :
-            <img
-              src={bgimagemobile}
-              alt="Background"
-              style={{
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover', // Scale the image like a background
-                zIndex: -1,
-                opacity: 1, // Optional: adjust if you want a translucent effect
-              }}
-            />
+          />
 
 
-          }
+
 
           <Stack
 
@@ -134,10 +135,10 @@ const Sidebar = () => {
                     color: active === 0 ? "#000" : "#fff",
                     fontWeight: "650"
                   }}>1</Box>
-                {window.innerWidth > 1200 && <Stack direction="column">
+                <Stack direction="column" sx={{ display: { xs: "none", lg: "block" } }}>
                   <Box >STEP 1</Box>
                   <Box sx={{ fontWeight: "600" }}>YOUR INFO</Box>
-                </Stack>}
+                </Stack>
               </Stack>
             </Link>
             <Link to="/plan" style={{ zIndex: 1, color: 'white', padding: '8px', textDecoration: "none" }}>
@@ -151,10 +152,10 @@ const Sidebar = () => {
                   color: active === 1 ? "#000" : "#fff",
                   fontWeight: "600"
                 }}> 2</Box>
-                {window.innerWidth > 1200 && <Stack direction="column">
+                <Stack direction="column" sx={{ display: { xs: "none", lg: "block" } }}>
                   <Box>STEP 2</Box>
                   <Box sx={{ fontWeight: "600" }}>SELECT PLAN </Box>
-                </Stack>}
+                </Stack>
               </Stack>
             </Link>
             <Link to="/addons"
@@ -169,8 +170,8 @@ const Sidebar = () => {
                   color: active === 2 ? "#000" : "#fff",
                   fontWeight: "600"
                 }}>3</Box>
-                {window.innerWidth > 1200 && <Stack direction="column">   <Box>STEP 3</Box> <Box sx={{ fontWeight: "600" }}>ADD-ONS</Box></Stack>
-                }
+                <Stack direction="column" sx={{ display: { xs: "none", lg: "block" } }}>   <Box>STEP 3</Box> <Box sx={{ fontWeight: "600" }}>ADD-ONS</Box></Stack>
+
               </Stack>
             </Link>
             <Link to="/finisher"
@@ -184,7 +185,7 @@ const Sidebar = () => {
                     : "transparent", // default
                   color: active === 3 ? "#000" : "#fff", fontWeight: "600"
                 }}>4</Box>
-                {window.innerWidth > 1200 && <Stack direction="column">   <Box>STEP 4</Box> <Box sx={{ fontWeight: "600" }}>SUMMARY</Box></Stack>}
+                <Stack direction="column" sx={{ display: { xs: "none", lg: "block" } }}>   <Box>STEP 4</Box> <Box sx={{ fontWeight: "600" }}>SUMMARY</Box></Stack>
               </Stack>
             </Link>
           </Stack>
