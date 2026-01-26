@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useState } from "react";
 import {
   createBrowserRouter,
@@ -80,15 +80,27 @@ function App() {
   );
 
   return (
-    <Grid
-      container
-      height="100vh"
-      justifyContent="center"
-      alignItems="center"
-      bgcolor="#00eaff1c"
-    >
-      <RouterProvider router={router} />
-    </Grid>
+    <>
+
+      <Grid
+        container
+        height="100vh"
+        justifyContent="center"
+        alignItems="center"
+        position="relative"
+        bgcolor="#00eaff1c"
+        display="flex"
+        flexDirection="column"
+      >
+        <RouterProvider router={router} />
+
+        <Box sx={{ postion: "absolute", border: 0, start: 0, }}>
+          Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+          Coded by <a href="#">Deepu</a>.
+        </Box>
+      </Grid>
+
+    </>
   );
 }
 
